@@ -28,7 +28,7 @@ http.createServer(function (request, response) {
             console.error(err);
 
             /* Send the HTTP header 
-             * HTTP Status: 400 : NOT FOUND
+             * HTTP Status: 302 : Redirect
              * Content Type: text/html 
              */
 
