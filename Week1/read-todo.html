@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home Page</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+            let myRequest = "todo.json";
+
+            fetch(myRequest)
+            .then(function(response) {
+                return response.json()
+            })
+            .then(function(json) {
+                console.log(json)
+
+                for(var i = 0; i < json.length; i++)
+                {
+                    var obj = json[i];
+                    document.getElementById("JSON").innerHTML += "User ID: " + obj.userId + "<br>" + "ID: " + obj.id + "<br>" + "Title: " + obj.title + "<br>" + "Completed: " + obj.completed + "<br>";
+                }
+            })
+    </script>
+    <div>
+        TODO Page
+    </div>
+
+    <div>
+        <br>
+    </div>
+    
+    <div id="JSON"></div>
+</body>
+</html> 
