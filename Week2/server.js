@@ -3,6 +3,7 @@ var path = require("path");
 var hbs = require("hbs");
 
 var app = express();
+app.use(express.urlencoded({extended:false}));
 
 //partials
 hbs.registerPartials(__dirname + '/views/partials');
@@ -23,9 +24,11 @@ app.get("/about", function(req,res){
     res.render("about.hbs", {junk:"About Page"});
 });
 
-app.all("/results", function(req,res){
+app.post("/results",(req,res) => {
     console.log(req)
-    res.render("index.hbs", {junk:req.body.first + " " + req.query.middle});
+    var name = req.body.first + " " + req.body.last;
+
+    res.render("index.hbs", {junk:name});
 });
 
 app.listen(3000, ()=>{console.log("Server running on port 3000")});
